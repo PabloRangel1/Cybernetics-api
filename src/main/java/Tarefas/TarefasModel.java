@@ -20,6 +20,9 @@ public class TarefasModel {
     private Long id;
     private String nomeDaTarefa;
     private String categoria;
+    // colocando a coluna de email como unica
+    @Column(unique = true)
+    private String email;
     private String responsavel;
     // @OneToMany Uma tarefa pode ter varios funcionarios
     @OneToMany(mappedBy = "tarefas")
