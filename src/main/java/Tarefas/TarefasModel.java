@@ -2,11 +2,17 @@ package Tarefas;
 
 import Employee.Controller.Service.EmployeeModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
-@Table (name = "tb_tarefas")
+@Table(name = "tb_tarefas")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class TarefasModel {
 
     @Id
@@ -18,6 +24,5 @@ public class TarefasModel {
     // @OneToMany Uma tarefa pode ter varios funcionarios
     @OneToMany(mappedBy = "tarefas")
     private List<EmployeeModel> emp;
-
 
 }
