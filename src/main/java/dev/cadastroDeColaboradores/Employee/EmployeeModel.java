@@ -1,6 +1,6 @@
-package Employee;
+package dev.cadastroDeColaboradores.Employee;
 
-import Tarefas.TarefasModel;
+import dev.cadastroDeColaboradores.Tarefas.TarefasModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,8 +31,7 @@ public class EmployeeModel {
 
     // @ManyToOne um empregado tem uma única tarefa
     @ManyToOne
-    @JoinColumn(name = "tarefas_id")
-    private TarefasModel tarefa;
-
+    @JoinColumn(name = "tarefas_id") // FK do banco
+    private TarefasModel tarefas;
 
 }

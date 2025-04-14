@@ -1,4 +1,4 @@
-package Tarefas;
+package dev.cadastroDeColaboradores.Tarefas;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

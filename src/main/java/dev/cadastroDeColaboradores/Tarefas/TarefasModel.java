@@ -1,6 +1,6 @@
-package Tarefas;
+package dev.cadastroDeColaboradores.Tarefas;
 
-import Employee.EmployeeModel;
+import dev.cadastroDeColaboradores.Employee.EmployeeModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,8 @@ public class TarefasModel {
     private String nomeDaTarefa;
     private String responsavel;
     // @OneToMany Uma tarefa pode ter varios funcionarios
-    @OneToMany(mappedBy = "tarefas")
+
+    @OneToMany(mappedBy = "tarefas") // tarefas é o nome do atributo na EmployeeModel
     private List<EmployeeModel> emp;
 
 }
