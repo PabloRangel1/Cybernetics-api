@@ -3,7 +3,7 @@ package dev.cadastroDeColaboradores.Employee;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/emp")
 public class EmployeeController {
     @GetMapping("/boasvindas")
     public String boasVindas() {
@@ -16,12 +16,12 @@ public class EmployeeController {
         return "Employee criado";
     }
     // Mostrar todos os Employee (READ)
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public String mostrarTodosEmployee() {
         return "Mostrar todos Employee";
     }
     // Procurar Employee por ID (READ)
-     @GetMapping("/todosID")
+    @GetMapping("/listarID")
     public String mostrarTodosEmployeeID() {
         return "Mostrar employee por id";
     }
