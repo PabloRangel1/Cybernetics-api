@@ -29,6 +29,7 @@ public class EmployeeModel {
     private String cargo;
 
 
+
     // @ManyToOne um empregado tem uma única tarefa
     @ManyToOne
     @JoinColumn(name = "tarefas_id") // FK do banco
