@@ -1,5 +1,6 @@
 package dev.cadastroDeColaboradores.Tarefas;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.cadastroDeColaboradores.Employee.EmployeeModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,8 @@ public class TarefasModel {
     private String responsavel;
     // @OneToMany Uma tarefa pode ter varios funcionarios
 
-    @OneToMany(mappedBy = "tarefas") // tarefas é o nome do atributo na EmployeeModel
-    private List<EmployeeModel> emp;
+        @OneToMany(mappedBy = "tarefas") // tarefas é o nome do atributo na EmployeeModel
+        @JsonIgnore
+        private List<EmployeeModel> emp;
 
 }
