@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -17,6 +18,12 @@ public class EmployeeService {
     //listar todos os meus Ninjas // puxando a variavel do repository
     public List<EmployeeModel>listarEmployee(){
         return empRepository.findAll();
+    }
+
+    // Listar todos meus ninjas por ID
+    public EmployeeModel listarEmployeeID(Long id ){
+        Optional<EmployeeModel> empModel = empRepository.findById(id);
+        return empModel.orElse(null);
     }
 
 }

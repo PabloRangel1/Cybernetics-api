@@ -31,10 +31,11 @@ public class EmployeeController {
         return empService.listarEmployee();
     }
 
+
     // Procurar Employee por ID (READ)
-    @GetMapping("/listarID")
-    public String listarEmployeeID() {
-        return "Mostrar employee por id";
+    @GetMapping("/listar/{id}")
+    public EmployeeModel listarEmployeeID(@PathVariable Long id) {
+        return empService.listarEmployeeID(id);
     }
 
     // Alterar dados do Employee (UPDATE)
