@@ -26,4 +26,9 @@ public class EmployeeService {
         return empModel.orElse(null);
     }
 
+    // Criar um novo Employee
+    public EmployeeModel criarEmployee(EmployeeModel employee){
+        return empRepository.save(employee);
+    }
+
 }

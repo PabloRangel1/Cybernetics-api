@@ -20,9 +20,9 @@ public class EmployeeController {
     }
 
     // Adicionar Employee (CREATE)
-    @PostMapping("criar")
-    public String criarEmployee() {
-        return "Employee criado";
+    @PostMapping("/criar")
+    public EmployeeModel criarEmployee(@RequestBody EmployeeModel employee) {
+        return empService.criarEmployee(employee);
     }
 
     // Mostrar todos os Employee (READ)
