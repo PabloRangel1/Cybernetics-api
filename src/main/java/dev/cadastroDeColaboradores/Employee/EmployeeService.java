@@ -31,4 +31,9 @@ public class EmployeeService {
         return empRepository.save(employee);
     }
 
+    // Deletar o Employee -> Void
+        public void deletarEmployeeID(Long id){
+        empRepository.deleteById(id);
+    }
+
 }
