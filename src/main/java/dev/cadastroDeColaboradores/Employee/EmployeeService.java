@@ -36,4 +36,14 @@ public class EmployeeService {
         empRepository.deleteById(id);
     }
 
+    // Atualizar Employee
+//    public EmployeeModel atualizarNinja(Long id, EmployeeModel empAtualizado){
+//        if(empRepository.existsById(id)){
+//            empAtualizado.setId(id);
+//            return empRepository.save(empAtualizado);
+//        }
+//        return null;
+//    }
+
+
 }

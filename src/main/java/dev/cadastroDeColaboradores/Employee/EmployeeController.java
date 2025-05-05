@@ -39,10 +39,10 @@ public class EmployeeController {
     }
 
     // Alterar dados do Employee (UPDATE)
-    @PutMapping("/alterarID")
-    public String alterarNinjaID() {
-        return "";
-    }
+    @PutMapping("/alterar/{id}")
+//    public String alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeModel employeeAtualizado) {
+//        return empService.atualizarNinja(id, employeeAtualizado);
+//    }
 
     // Deletar Employee (DELETE)
     @DeleteMapping("/deletar/{id}")
