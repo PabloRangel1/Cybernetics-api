@@ -21,7 +21,7 @@ public class EmployeeController {
 
     // Adicionar Employee (CREATE)
     @PostMapping("/criar")
-    public EmployeeModel criarEmployee(@RequestBody EmployeeModel employee) {
+    public EmployeeDTO criarEmployee(@RequestBody EmployeeDTO employee) {
         return empService.criarEmployee(employee);
     }
 
@@ -40,9 +40,9 @@ public class EmployeeController {
 
     // Alterar dados do Employee (UPDATE)
     @PutMapping("/alterar/{id}")
-//    public String alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeModel employeeAtualizado) {
-//        return empService.atualizarNinja(id, employeeAtualizado);
-//    }
+    public EmployeeModel alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeModel employeeAtualizado) {
+        return empService.atualizarNinja(id, employeeAtualizado);
+    }
 
     // Deletar Employee (DELETE)
     @DeleteMapping("/deletar/{id}")
