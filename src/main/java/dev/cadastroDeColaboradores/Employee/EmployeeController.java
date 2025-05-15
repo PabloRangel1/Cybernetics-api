@@ -1,5 +1,7 @@
 package dev.cadastroDeColaboradores.Employee;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,33 +23,55 @@ public class EmployeeController {
 
     // Adicionar Employee (CREATE)
     @PostMapping("/criar")
-    public EmployeeDTO criarEmployee(@RequestBody EmployeeDTO employee) {
-        return empService.criarEmployee(employee);
+    public ResponseEntity<String> criarEmployee(@RequestBody EmployeeDTO employee) {
+        EmployeeDTO novoEmp =  empService.criarEmployee(employee);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Employee criado com sucesso: " + novoEmp.getNome() + "(ID): " + novoEmp.getId());
     }
 
     // Mostrar todos os Employee (READ)
     @GetMapping("/listar")
-    public List<EmployeeDTO> listarEmployee() {
-        return empService.listarEmployee();
+    public ResponseEntity<List<EmployeeDTO>> listarEmployee() {
+       List<EmployeeDTO> employees =  empService.listarEmployee();
+       return ResponseEntity.ok(employees);
     }
 
 
     // Procurar Employee por ID (READ)
     @GetMapping("/listar/{id}")
-    public EmployeeDTO listarEmployeeID(@PathVariable Long id) {
-        return empService.listarEmployeeID(id);
+    public ResponseEntity<?> listarEmployeeID(@PathVariable Long id) {
+       EmployeeDTO employeeDTO =  empService.listarEmployeeID(id);
+       if(employeeDTO != null){
+          return ResponseEntity.ok(employeeDTO);
+       }else {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                   .body("Employee com id " + id + " não existe no nossos registros");
+       }
     }
 
     // Alterar dados do Employee (UPDATE)
     @PutMapping("/alterar/{id}")
-    public EmployeeDTO alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {
-        return empService.atualizarNinja(id, employeeAtualizado);
+    public ResponseEntity<?> alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {
+
+        EmployeeDTO employee =  empService.atualizarNinja(id, employeeAtualizado);
+        if(employee != null){
+            return ResponseEntity.ok(employee);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Employee com id " + id + " não existe no nossos registros");
+        }
     }
 
     // Deletar Employee (DELETE)
     @DeleteMapping("/deletar/{id}")
-    public void deletarEmployeeID(@PathVariable Long id) {
-        empService.deletarEmployeeID(id);
+    public ResponseEntity<String> deletarEmployeeID(@PathVariable Long id) {
+        if (empService.listarEmployeeID(id) != null) {
+            empService.deletarEmployeeID(id);
+            return ResponseEntity.ok("Employee com o ID: " + id + " Employee Deletado com sucesso");
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("O employee de ID: " + id + " não foi encontrado");
+        }
     }
 
 }
