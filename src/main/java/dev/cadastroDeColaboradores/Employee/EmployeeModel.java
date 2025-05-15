@@ -28,6 +28,8 @@ public class EmployeeModel {
     @Column(name = "cargo")
     private String cargo;
 
+    @Column (name = "departamento")
+    private String departamento;
 
 
     // @ManyToOne um empregado tem uma única tarefa

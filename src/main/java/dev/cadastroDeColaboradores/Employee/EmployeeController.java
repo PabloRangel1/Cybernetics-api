@@ -21,28 +21,28 @@ public class EmployeeController {
 
     // Adicionar Employee (CREATE)
     @PostMapping("/criar")
-    public EmployeeModel criarEmployee(@RequestBody EmployeeModel employee) {
+    public EmployeeDTO criarEmployee(@RequestBody EmployeeDTO employee) {
         return empService.criarEmployee(employee);
     }
 
     // Mostrar todos os Employee (READ)
     @GetMapping("/listar")
-    public List<EmployeeModel> listarEmployee() {
+    public List<EmployeeDTO> listarEmployee() {
         return empService.listarEmployee();
     }
 
 
     // Procurar Employee por ID (READ)
     @GetMapping("/listar/{id}")
-    public EmployeeModel listarEmployeeID(@PathVariable Long id) {
+    public EmployeeDTO listarEmployeeID(@PathVariable Long id) {
         return empService.listarEmployeeID(id);
     }
 
     // Alterar dados do Employee (UPDATE)
     @PutMapping("/alterar/{id}")
-//    public String alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeModel employeeAtualizado) {
-//        return empService.atualizarNinja(id, employeeAtualizado);
-//    }
+    public EmployeeDTO alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {
+        return empService.atualizarNinja(id, employeeAtualizado);
+    }
 
     // Deletar Employee (DELETE)
     @DeleteMapping("/deletar/{id}")
