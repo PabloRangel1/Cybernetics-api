@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeService {
     //Chamadada do repository
-    private EmployeeRepository empRepository;
-    private EmployeeMapper employeeMapper;
+    private final  EmployeeRepository empRepository;
+    private final EmployeeMapper employeeMapper;
 
     public EmployeeService(EmployeeRepository empRepository, EmployeeMapper empMapper) {
         this.empRepository = empRepository;

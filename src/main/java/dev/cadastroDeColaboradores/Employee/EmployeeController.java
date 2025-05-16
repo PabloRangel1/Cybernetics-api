@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/emp")
 public class EmployeeController {
 
-    private EmployeeService empService;
+    private final EmployeeService empService;
 
     public EmployeeController(EmployeeService empService) {
         this.empService = empService;
