@@ -51,9 +51,9 @@ public class EmployeeController {
 
     // Alterar dados do Employee (UPDATE)
     @PutMapping("/alterar/{id}")
-    public ResponseEntity<?> alterarNinjaID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {
+    public ResponseEntity<?> alterarEmployeeID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {
 
-        EmployeeDTO employee =  empService.atualizarNinja(id, employeeAtualizado);
+        EmployeeDTO employee =  empService.atualizarEmployee(id, employeeAtualizado);
         if(employee != null){
             return ResponseEntity.ok(employee);
         }else{

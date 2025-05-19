@@ -40,7 +40,7 @@ public class EmployeeService {
     }
 
     // Atualizar Employee
-    public EmployeeDTO atualizarNinja(Long id, EmployeeDTO employeeDTO){
+    public EmployeeDTO atualizarEmployee(Long id, EmployeeDTO employeeDTO){
         Optional<EmployeeModel> empExistente = empRepository.findById(id);
         if (empExistente.isPresent()) {
             EmployeeModel empAtualizado = employeeMapper.map(employeeDTO);
