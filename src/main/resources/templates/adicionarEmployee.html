@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Employee</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: url('https://images.steamusercontent.com/ugc/2058741574591783688/9C6BAD68B0072EBC34EAEE00DEE08662DE28BB27/') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0ff, 0 0 30px #f0f;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffe7;
+      text-shadow: 0 0 10px #00ffe7;
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #ff00ff;
+      text-shadow: 0 0 6px #ff00ff;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 14px;
+      box-shadow: inset 0 0 5px #00fff2;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(135deg, #00ffe7, #ff00c8);
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffe7, 0 0 20px #ff00c8;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: #000;
+      color: #fff;
+      border: 2px solid #00ffe7;
+      box-shadow: 0 0 20px #00ffe7, 0 0 40px #ff00c8;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 6px #00ffff;
+    }
+
+    a:hover {
+      color: #ff00c8;
+      text-shadow: 0 0 10px #ff00c8;
+    }
+
+    .mensagem {
+      text-align: center;
+      color: #00ff88;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #00ff88;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Cadastro de Employee</h1>
+
+    <div th:if="${mensagem}" class="mensagem">
+      <p th:text="${mensagem}"></p>
+    </div>
+
+    <form action="#" th:action="@{/emp/ui}" th:object="${employee}" method="post">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" th:field="*{nome}" placeholder="Digite o nome" required/>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" th:field="*{email}" placeholder="Digite o email" required/>
+
+      <label for="cargo">Cargo:</label>
+      <input type="text" id="cargo" th:field="*{cargo}" placeholder="Digite o cargo" required/>
+
+      <label for="departamento">Departamento:</label>
+      <input type="text" id="departamento" th:field="*{departamento}" placeholder="Digite o departamento" required/>
+
+      <button type="submit">Salvar</button>
+    </form>
+
+    <a href="/emp/ui/listar">← Voltar à lista</a>
+  </div>
+</body>
+</html>

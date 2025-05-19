@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes do Colaborador</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Michroma', sans-serif;
+      background: url('https://wallpapercat.com/w/full/5/d/f/2614-3840x2160-desktop-4k-cyberpunk-2077-wallpaper-photo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffffcc;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    th {
+      text-align: left;
+      color: #ff00cc;
+      text-shadow: 0 0 6px #ff00cc;
+    }
+
+    td {
+      text-shadow: 0 0 4px #00ffffaa;
+    }
+
+    .btn-voltar {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #00ffe7, #ff00c8);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 10px #00ffe7, 0 0 20px #ff00c8;
+    }
+
+    .btn-voltar:hover {
+      box-shadow: 0 0 20px #00ffe7, 0 0 40px #ff00c8;
+      transform: scale(1.05);
+      color: #fff;
+      background: #000;
+      border: 2px solid #00ffe7;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detalhes do Colaborador</h1>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <td th:text="${employee.id}">1</td>
+      </tr>
+      <tr>
+        <th>Nome</th>
+        <td th:text="${employee.nome}">Fulano</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td th:text="${employee.email}">fulano@email.com</td>
+      </tr>
+      <tr>
+        <th>Departamento</th>
+        <td th:text="${employee.departamento}">TI</td>
+      </tr>
+      <tr>
+        <th>Cargo</th>
+        <td th:text="${employee.cargo}">Desenvolvedor</td>
+      </tr>
+    </table>
+
+    <a href="/emp/ui/listar" class="btn-voltar">← Voltar à lista</a>
+  </div>
+</body>
+</html>

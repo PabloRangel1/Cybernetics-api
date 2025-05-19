@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Colaborador</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+    body {
+      font-family: 'Michroma', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://applescoop.org/image/wallpapers/mac/cyberpunk-blade-runner-2049-movie-sci-fi-scifi-city-with-neon-lights-and-holograms-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638359-hd-wallpaper.png') no-repeat center fixed;
+      background-size: cover;
+      color: #ffffff;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 100px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #0ff, 0 0 30px #f0f;
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ffee;
+      text-shadow: 0 0 8px #00ffee;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #ff00ff;
+      text-shadow: 0 0 6px #ff00ff;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      box-shadow: inset 0 0 5px #00fff2;
+      font-size: 14px;
+    }
+
+    input[type="text"]::placeholder, input[type="email"]::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(135deg, #00ffe7, #ff00c8);
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffe7, 0 0 20px #ff00c8;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: #000;
+      color: #fff;
+      border: 2px solid #00ffe7;
+      box-shadow: 0 0 20px #00ffe7, 0 0 40px #ff00c8;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 6px #00ffff;
+    }
+
+    a:hover {
+      color: #ff00c8;
+      text-shadow: 0 0 10px #ff00c8;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Editar Colaborador</h2>
+        <form th:action="@{'/emp/ui/alterar/' + ${employee.id}}" th:object="${employee}" method="post">
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}" required />
+
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required />
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+        <br/>
+        <a href="/emp/ui/listar">Voltar à Lista</a>
+    </div>
+</body>
+</html>
