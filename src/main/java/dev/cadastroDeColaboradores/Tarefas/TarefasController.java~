@@ -9,8 +9,7 @@ import java.util.Optional;
 public class TarefasController {
     // LOCALHOST:8080/tarefas/crud <-"controller"
     // TODO: De maneira mais simples vou conectar diretamente com a model
-    // Fazer inputs manualmente no banco de dados e apenas puxar o uma lista de missoes por ID
-    // e atribuir a um cyber, depois fazer o front na barra detalhes
+    // Fazer inputs manualmente no banco de dados e apenas 
 
     TarefasRepository tarefasRepo;
 
@@ -18,7 +17,7 @@ public class TarefasController {
         this.tarefasRepo = tarefasRepo;
     }
 
-    @GetMapping("/listar") //Optional pois pode ou não ter ID da missão
+    @GetMapping("/listar") //Faz um read das nossas infos que vao vir de uma LIST
     public Optional<TarefasModel> listarTarefa(long id) {
         return tarefasRepo.findById(id);
     }

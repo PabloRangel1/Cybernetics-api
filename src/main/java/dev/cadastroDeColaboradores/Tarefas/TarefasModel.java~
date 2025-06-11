@@ -27,7 +27,7 @@ public class TarefasModel {
 
         @OneToMany(mappedBy = "tarefas") // tarefas é o nome do atributo na EmployeeModel
         @JsonIgnore
-        private List<EmployeeModel> emp;
+        private List<EmployeeModel> emp;    
 
 
 }

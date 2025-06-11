@@ -17,7 +17,7 @@ public class EmployeeController {
     public EmployeeController(EmployeeService empService) {
         this.empService = empService;
     }
-    @Operation(summary = "Mensagem de boas vindas", description = "Essa é uma rota de boas vindas para o usuario")
+    @Operation(sumarry = "Mensagem de boas vindas", description = "Mensagem de boas vindas")
     @GetMapping("/boasvindas")
     public String boasVindas() {
         return "Essa é minha primeira mensagem nessa rota";
