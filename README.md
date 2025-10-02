@@ -1,8 +1,8 @@
 # Cybernetics-api: Sistema de Cadastro de Cybernetics 
 
-Sistema Full Stack com Spring Boot, Thymeleaf e JPA para gerenciamento de colaboradores e suas tarefas.
+Sistema Full Stack com Spring Boot, Thymeleaf e JPA para gerenciamento de cybernetics e suas tarefas.
 
-**Repositório:** [https://github.com/PabloRangel1/Cybernetics-api](https://github.com/PabloRangel1/Cybernetics-api)
+![MiniaturaCyberList.png](src/main/resources/static/Assets/MiniaturaCyberList.png)
 
 ---
 
