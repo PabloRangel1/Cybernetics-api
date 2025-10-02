@@ -1,86 +1,74 @@
-💼 Sistema de Cadastro de Colaboradores com Tarefas
- Projeto Full Stack com Spring Boot + Thymeleaf + JPA (Hibernate) + SQLite
-🔗 Repositório: [https://github.com/PabloRangel1/CadastroDeColaboradores]
+# Cybernetics-api: Sistema de Cadastro de Cybernetics 
 
-📌 Descrição Geral
-Desenvolvi um sistema completo de cadastro e gerenciamento de colaboradores, integrando a interface web (com Thymeleaf) a uma API RESTful. O projeto permite cadastrar, visualizar, editar e excluir colaboradores, além de associá-los a tarefas específicas dentro da organização.
+Sistema Full Stack com Spring Boot, Thymeleaf e JPA para gerenciamento de colaboradores e suas tarefas.
 
-A aplicação foi projetada com boas práticas de arquitetura, separando responsabilidades entre controller, service, DTO, model e mapper, além de possuir duas camadas de acesso: interface de usuário (UI) e API REST.
+**Repositório:** [https://github.com/PabloRangel1/Cybernetics-api](https://github.com/PabloRangel1/Cybernetics-api)
 
-🛠️ Tecnologias Utilizadas
-Back-end:
+---
 
-Java 17
+### Tecnologias Utilizadas
 
-Spring Boot (Web, Data JPA)
+* **Back-end:** Java 17, Spring Boot, Spring Data JPA, Hibernate, PostgreSQL, Lombok.
+* **Front-end:** Thymeleaf, HTML5, CSS3.
+* **Documentação:** Swagger (OpenAPI 3.0).
+* **Conteinerização:** Docker, Docker Compose.
 
-Hibernate (ORM)
+---
 
-SQLite
+### Executando com Docker
 
-Front-end:
+**Pré-requisitos:**
+* Docker
+* Docker Compose
 
-Thymeleaf (template engine para Spring)
+#### Método 1: Docker Compose (Recomendado)
 
-HTML5 / CSS3
+Este método sobe a API e o banco de dados com um único comando.
 
-Documentação:
+1.  Clone o repositório:
+    ```sh
+    git clone [https://github.com/PabloRangel1/Cybernetics-api.git](https://github.com/PabloRangel1/Cybernetics-api.git)
+    cd Cybernetics-api
+    ```
 
-Swagger (OpenAPI 3.0)
+2.  Execute o Docker Compose:
+    ```sh
+    docker-compose up --build
+    ```
+    A aplicação estará disponível em `http://localhost:8080`.
 
-Lombok para reduzir boilerplate de código (getters, setters, construtores etc.)
+#### Método 2: Imagem do Docker Hub (`docker run`)
 
-📂 Funcionalidades Implementadas
-🔗 API REST (/emp)
-GET /emp/boasvindas – Rota de teste com mensagem de boas-vindas
+Este método executa apenas o contêiner da API. Requer uma instância do PostgreSQL rodando separadamente.
 
-POST /emp/criar – Cadastro de novo colaborador
+```sh
+docker run -d --name cybernetics-api \
+  -p 8080:8080 \
+  -e SPRING_DATASOURCE_URL=jdbc:postgresql://<host_do_banco>:5432/<nome_do_banco> \
+  -e SPRING_DATASOURCE_USERNAME=<usuario_do_banco> \
+  -e SPRING_DATASOURCE_PASSWORD=<senha_do_banco> \
+  pablorangel1/cybernetics-api:1.0
+```
+*Nota: Substitua os valores `<...>` pelas credenciais do seu banco de dados externo.(TXT Acompanhado com as credenciais)*
 
-GET /emp/listar – Listagem de todos os colaboradores
+#### Acesso à Documentação da API (Swagger)
 
-GET /emp/listar/{id} – Buscar colaborador por ID
+A documentação interativa da API está disponível no seguinte endereço:
+* [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-PUT /emp/alterar/{id} – Atualização de dados de um colaborador
+---
 
-DELETE /emp/deletar/{id} – Exclusão por ID
+### Arquitetura e Funcionalidades
 
-🖥️ Interface Web (/emp/ui)
-Página para cadastrar novo colaborador
+A aplicação utiliza uma arquitetura em camadas (`Controller`, `Service`, `Repository`) e o padrão DTO para transferência de dados.
 
-Listagem com todos os colaboradores registrados
+**Funcionalidades API REST (`/emp`):**
+* `POST /emp/criar`: Cadastra um novo colaborador.
+* `GET /emp/listar`: Lista todos os colaboradores.
+* `GET /emp/listar/{id}`: Busca um colaborador por ID.
+* `PUT /emp/alterar/{id}`: Atualiza um colaborador.
+* `DELETE /emp/deletar/{id}`: Remove um colaborador.
 
-Visualização detalhada de um cybernetic
-
-Formulário de edição e opção de exclusão
-
-Feedback ao usuário com mensagens de sucesso ou erro
-
-📋 Tarefas
-Cada colaborador pode estar associado a uma única tarefa
-
-Tarefa é um objeto separado e persistido no banco (TarefasModel)
-
-Relação de @ManyToOne no lado do colaborador, e @OneToMany no lado da tarefa
-
-🔄 Camadas da Aplicação
-DTO (Data Transfer Object): abstração de dados entre a camada de persistência e a exibição
-
-Model: representação das entidades do banco de dados (JPA)
-
-Repository: abstração de queries usando Spring Data JPA
-
-Service: camada responsável pela regra de negócio
-
-Controller (UI + API): endpoints RESTful e rotas web para renderização com Thymeleaf
-
-Mapper: conversão entre DTOs e Models
-
-📈 Objetivos do Projeto
-Praticar e consolidar conhecimentos em Spring Boot com MVC e JPA
-
-Trabalhar com entidades relacionadas em banco de dados
-
-Criar uma aplicação real com padrões profissionais
-
-Integrar front-end e back-end em um único sistema
-
+**Funcionalidades Interface Web (`/emp/ui`):**
+* Formulário de cadastro e edição.
+* Listagem e visualização detalhada de colaboradores.
