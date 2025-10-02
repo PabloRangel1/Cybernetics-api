@@ -50,7 +50,6 @@ public class EmployeeController {
                    .body("Employee com id " + id + " não existe no nossos registros");
        }
     }
-
     // Alterar dados do Employee (UPDATE)
     @PutMapping("/alterar/{id}")
     public ResponseEntity<?> alterarEmployeeID(@PathVariable Long id, @RequestBody EmployeeDTO employeeAtualizado) {

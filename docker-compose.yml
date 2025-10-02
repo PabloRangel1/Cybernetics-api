@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Serviço da sua API Spring Boot
+  api:
+    build: .
+    container_name: cadastro-api
+    ports:
+      - "8080:8080"
+    environment:
+      # ATENÇÃO: Os valores aqui devem ser os mesmos definidos no serviço 'db' abaixo
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/colaboradores_db
+      - SPRING_DATASOURCE_USERNAME=colaborador_app_user
+      - SPRING_DATASOURCE_PASSWORD=colaborador@#
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Serviço do Banco de Dados PostgreSQL
+  db:
+    image: postgres:14.1-alpine
+    container_name: cadastro-db
+    ports:
+      - "5555:5432" # <-- MUDANÇA AQUI
+    environment:
+      # ATENÇÃO: Defina aqui o nome do banco, usuário e senha que desejar
+      - POSTGRES_DB=colaboradores_db
+      - POSTGRES_USER=colaborador_app_user
+      - POSTGRES_PASSWORD=colaborador@#
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U colaborador_app_user -d colaboradores_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
